@@ -71,11 +71,13 @@ var SignaturePad = (function (document) {
 
     SignaturePad.prototype.clear = function () {
         var ctx = this._ctx,
-            canvas = this._canvas;
+            ratio = window.devicePixelRatio || 1,
+            width = this._canvas.width / ratio,
+            height = this._canvas.height / ratio;
 
         ctx.fillStyle = this.backgroundColor;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillRect(0, 0, width, height);
         this._reset();
     };
 
